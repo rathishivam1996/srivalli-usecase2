@@ -5,15 +5,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Pattern;
 
 @Entity(name = "customer")
 @Table(name = "customer")
 public class Customer {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", nullable = false, unique = true)
 	private Long id;
 
 	@Column(name = "first_name", nullable = false, unique = false)
@@ -31,9 +31,23 @@ public class Customer {
 	@Column(name = "phone", nullable = false, unique = true)
 	private String phone;
 
-	@Column(name = "booking", nullable = true, unique = true)
-	@OneToOne(mappedBy = "customer")
-	private Booking booking;
+	@Column(name = "starting_location", nullable = false, unique = false)
+	private String startingLocation;
+
+	@Column(name = "destination_location", nullable = false, unique = false)
+	private String destinationLocation;
+
+	@Column(name = "locations", nullable = false, unique = false)
+	private String locations;
+
+	@Column(name = "package_name", nullable = false, unique = false)
+	private String packageName;
+
+	@Column(name = "cost", nullable = false, unique = false)
+	private int cost;
+
+	@Column(name = "notes", nullable = true, unique = false)
+	private String notes;
 
 	public Long getId() {
 		return id;
@@ -83,21 +97,62 @@ public class Customer {
 		this.phone = phone;
 	}
 
-	public Booking getBooking() {
-		return booking;
+	public String getStartingLocation() {
+		return startingLocation;
 	}
 
-	public void setBooking(Booking booking) {
-		this.booking = booking;
+	public void setStartingLocation(String startingLocation) {
+		this.startingLocation = startingLocation;
+	}
+
+	public String getDestinationLocation() {
+		return destinationLocation;
+	}
+
+	public void setDestinationLocation(String destinationLocation) {
+		this.destinationLocation = destinationLocation;
+	}
+
+	public String getLocations() {
+		return locations;
+	}
+
+	public void setLocations(String locations) {
+		this.locations = locations;
+	}
+
+	public String getPackageName() {
+		return packageName;
+	}
+
+	public void setPackageName(String packageName) {
+		this.packageName = packageName;
+	}
+
+	public int getCost() {
+		return cost;
+	}
+
+	public void setCost(int cost) {
+		this.cost = cost;
+	}
+
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
 	}
 
 	@Override
 	public String toString() {
-		return "Customer [" + "\n" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", permanentAddress=" + permanentAddress + ", communicationAddress=" + communicationAddress
-				+ ", phone=" + phone + "\n" + "]";
+		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", permanentAddress="
+				+ permanentAddress + ", communicationAddress=" + communicationAddress + ", phone=" + phone
+				+ ", startingLocation=" + startingLocation + ", destinationLocation=" + destinationLocation
+				+ ", locations=" + locations + ", packageName=" + packageName + ", cost=" + cost + ", notes=" + notes
+				+ "]";
 	}
-
 }
 
 //@Pattern(regexp = "^[A-Za-z]*$", message = "Invalid firstName ^[A-Za-z]*$")
