@@ -1,24 +1,24 @@
 package com.srivalli.travelagency.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.srivalli.travelagency.dto.CustomerDto;
 import com.srivalli.travelagency.model.Customer;
 
 @Service
 public interface ICustomerService {
 
-	public Customer saveCustomer(Customer customer);
+	public CustomerDto saveCustomer(CustomerDto customerDto);
 
-	public Customer findCustomerById(Long customerId);
+	public CustomerDto findCustomerById(Long customerId);
 
-	public List<Customer> findCustomerByFirstName(String firstName);
+	public List<CustomerDto> findCustomerByFirstName(String firstName);
 
-	public Customer findCustomerByPhone(String phone);
+	public CustomerDto findCustomerByPhone(String phone);
 
-	public Customer updateCustomer(Customer customer);
+	public CustomerDto updateCustomer(Long customerId, CustomerDto customerDto);
 
 	public void deleteCustomerById(Long customerId);
 

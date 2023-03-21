@@ -1,21 +1,15 @@
 package com.srivalli.travelagency;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import com.srivalli.travelagency.model.Customer;
 import com.srivalli.travelagency.service.CustomerService;
 
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 
 @SpringBootApplication
-@Slf4j
 public class TravelagencyApplication {
 
 	public static void main(String[] args) {
