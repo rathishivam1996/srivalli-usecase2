@@ -9,6 +9,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,11 +22,15 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Builder
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false, unique = true)
 	private Long id;
+
+	@Column(name = "phone", nullable = false, unique = true)
+	private String phone;
 
 	@Column(name = "first_name", nullable = false, unique = false)
 	private String firstName;
@@ -38,9 +43,6 @@ public class Customer {
 
 	@Column(name = "communication_address", nullable = false, unique = false)
 	private String communicationAddress;
-
-	@Column(name = "phone", nullable = false, unique = true)
-	private String phone;
 
 	@Column(name = "starting_location", nullable = false, unique = false)
 	private String startingLocation;

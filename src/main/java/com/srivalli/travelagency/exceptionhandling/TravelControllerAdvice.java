@@ -46,16 +46,6 @@ public class TravelControllerAdvice {
 		return new ResponseEntity<ErrorMessage>(errorMessage, HttpStatus.NOT_FOUND);
 	}
 
-	@ExceptionHandler(DateTimeParseException.class)
-	@ResponseStatus(HttpStatus.BAD_REQUEST)
-	public ResponseEntity<ErrorMessage> invalidDateException(DateTimeParseException ex) {
-
-		ErrorMessage errorMessage = new ErrorMessage(HttpStatus.BAD_REQUEST, new Date(), "Invalid Date",
-				"Please enter a valid date in the format dd/mm/yyyy");
-
-		return new ResponseEntity<ErrorMessage>(errorMessage, HttpStatus.BAD_REQUEST);
-	}
-
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public ResponseEntity<ErrorMessage> validationBindException(MethodArgumentNotValidException exception,
@@ -101,4 +91,14 @@ public class TravelControllerAdvice {
 
 		return new ResponseEntity<ErrorMessage>(errorMessage, HttpStatus.BAD_REQUEST);
 	}
+
+//	@ExceptionHandler(DateTimeParseException.class)
+//	@ResponseStatus(HttpStatus.BAD_REQUEST)
+//	public ResponseEntity<ErrorMessage> invalidDateException(DateTimeParseException ex) {
+//
+//		ErrorMessage errorMessage = new ErrorMessage(HttpStatus.BAD_REQUEST, new Date(), "Invalid Date",
+//				"Please enter a valid date in the format dd/mm/yyyy");
+//
+//		return new ResponseEntity<ErrorMessage>(errorMessage, HttpStatus.BAD_REQUEST);
+//	}
 }

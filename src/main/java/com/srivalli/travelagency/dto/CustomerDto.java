@@ -4,6 +4,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,14 +15,15 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Builder
 public class CustomerDto {
 	@Min(value = 0L, message = "Id can not be negative")
 	private Long id;
 
-	@Pattern(regexp = "^[a-zA-Z ]$")
+	@Pattern(regexp = "^[a-zA-Z ]+$")
 	private String firstName;
 
-	@Pattern(regexp = "^[a-zA-Z ]$")
+	@Pattern(regexp = "^[a-zA-Z ]+$")
 	private String lastName;
 
 	@Min(value = 0, message = "Cost can not be negative")
